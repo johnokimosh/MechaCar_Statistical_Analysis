@@ -11,8 +11,13 @@ This assignment consists of three technical analysis deliverables and a proposal
 ## Linear Regression to Predict MPG
 - ![1-1 - LM](https://user-images.githubusercontent.com/27740513/147894725-299617ec-6b4e-4e54-90b5-1f09eb047590.png)
 - Write up info
+- 
 - ![1-2 - Summary](https://user-images.githubusercontent.com/27740513/147894702-6a884ad8-1ecf-437c-9fe9-9559111aeadb.png)
 - Write up info
+-
+- Which variables/coefficients provided a non-random amount of variance to the mpg values in the dataset?
+- Is the slope of the linear model considered to be zero? Why or why not?
+- Does this linear model predict mpg of MechaCar prototypes effectively? Why or why not?
 
 # Study Design
 After you’ve completed the technical analysis for each deliverable, provide a short summary of the results in the README.md of the analysis. For the final deliverable, you’ll write up a short description of the study design for additional statistical analysis. In the written summaries, we would like you to think critically about your analysis, not demonstrate mastery of automotive manufacturing.
