@@ -1,0 +1,31 @@
+# D1-3. Use the library() function to load the dplyr package.
+library(dplyr)
+# D1-4. Import and read in the MechaCar_mpg.csv file as a dataframe.
+mpg_df <- read.csv(file="MechaCar_mpg.csv",check.names = F, stringsAsFactors = F)
+# D1-5. Perform linear regression
+lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD, data = mpg_df)
+# D1-6. Summary of linear regression
+summary(lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD, data = mpg_df))
+
+# D2-2. import and read in the Suspension_Coil.csv file as a table
+sus_coil_df <- read.csv(file="Suspension_Coil.csv",check.names = F, stringsAsFactors = F)
+# D2-3. create a "total_summary" dataframe using the summarize() function to get the mean, median, variance,
+# and standard deviation of the suspension coil’s PSI column
+total_summary <- sus_coil_df %>% summarize(Mean=mean(PSI), Median=median(PSI), Variance=var(PSI), ST_Dev=sd(PSI), .groups = 'keep')
+# D2-4. creates a "lot_summary" dataframe using the group_by() and the summarize() functions to group each
+# manufacturing lot by the mean, median, variance, and standard deviation of the suspension coil’s PSI column
+lot_summary <- sus_coil_df %>% group_by(Manufacturing_Lot) %>% summarize(Mean=mean(PSI), Median=median(PSI), Variance=var(PSI), ST_Dev=sd(PSI), .groups = 'keep')
+
+# D3-1. write an RScript using the t.test() function to determine if the PSI across all manufacturing lots
+# is statistically different from the population mean of 1,500 pounds per square inch.
+sample_coil <- sus_coil_df %>% sample_n(50)
+t.test(log10(sample_coil$PSI),mu=mean(log10(sus_coil_df$PSI)))
+# D3-2. write three more RScripts using the t.test() function and its 
+# subset() argument to determine if the PSI for each manufacturing lot is statistically different from
+# the population mean of 1,500 pounds per square inch
+lot1 <- subset(sus_coil_df, Manufacturing_Lot == "Lot1")
+lot2 <- subset(sus_coil_df, Manufacturing_Lot == "Lot2")
+lot3 <- subset(sus_coil_df, Manufacturing_Lot == "Lot3")
+t.test(log10(lot1$PSI),mu=mean(log10(sus_coil_df$PSI)))
+t.test(log10(lot2$PSI),mu=mean(log10(sus_coil_df$PSI)))
+t.test(log10(lot3$PSI),mu=mean(log10(sus_coil_df$PSI)))
